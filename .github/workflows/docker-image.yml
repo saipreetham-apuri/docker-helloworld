@@ -17,5 +17,5 @@ jobs:
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        docker build . -t testimagepaxafe.azurecr.io/myapp:2.0.0
-        docker push testimagepaxafe.azurecr.io/myapp:2.0.0
+        docker build . -t testimagepaxafe.azurecr.io/myapp:3.0.0
+        docker push testimagepaxafe.azurecr.io/myapp:3.0.0
