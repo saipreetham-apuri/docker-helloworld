@@ -32,7 +32,4 @@ jobs:
           azcliversion: latest
           inlineScript: |
             az account show
-            az containerapp update \
-            --name container-app-internal \
-            --resource-group test-resource \
-            --image testimagepaxafe.azurecr.io/myapp:${{ github.sha}}
+            az containerapp update -n container-app-internal -g test-resource --image testimagepaxafe.azurecr.io/myapp:${{ github.sha}}
