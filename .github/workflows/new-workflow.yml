@@ -27,7 +27,7 @@ jobs:
           docker build . -t testimagepaxafe.azurecr.io/myapp:${{ github.sha}}
           docker push testimagepaxafe.azurecr.io/myapp:${{ github.sha}}
       - name: Deploy to Azure Container App
-        uses: azure/container-apps@v1
+        uses: azure/container-apps@main
         with:
           resource-group: NetworkWatcherRG
           container-app-name: container-app-internal
