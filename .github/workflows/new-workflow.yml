@@ -35,7 +35,4 @@ jobs:
             az containerapp update \
             --name container-app-internal \
             --resource-group test-resource \
-            --image testimagepaxafe.azurecr.io/myapp:${{ github.sha}} \
-            --registry-server testimagepaxafe.azurecr.io \
-            --registry-username ${{ secrets.REGISTRY_USERNAME }} \
-            --registry-password ${{ secrets.REGISTRY_PASSWORD }}
+            --image testimagepaxafe.azurecr.io/myapp:${{ github.sha}}
