@@ -26,10 +26,11 @@ jobs:
         run: |
           docker build . -t testimagepaxafe.azurecr.io/myapp:${{ github.sha}}
           docker push testimagepaxafe.azurecr.io/myapp:${{ github.sha}}
-      - name: Azure CLI script
-        uses: azure/cli@v2
+      - name: Deploy to Azure Container App
+        uses: azure/container-apps@v1
         with:
-          azcliversion: latest
-          inlineScript: |
-            az account show
-            az containerapp update -n container-app-internal -g NetworkWatcherRG --image testimagepaxafe.azurecr.io/myapp:${{github.sha}}
+          resource-group: NetworkWatcherRG
+          container-app-name: container-app-internal
+          image: testimagepaxafe.azurecr.io/myapp:${{ github.sha}}
+          registry-username: ${{ secrets.REGISTRY_USERNAME }}
+          registry-password: ${{ secrets.REGISTRY_PASSWORD }}
