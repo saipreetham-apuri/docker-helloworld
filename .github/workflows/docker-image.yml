@@ -1,7 +1,8 @@
 name: Build and Deploy Container App
 
 on:
-  workflow_dispatch:
+  push:
+    branches: ["main"]
 
 jobs:
   build:
@@ -17,5 +18,5 @@ jobs:
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        docker build . -t testimagepaxafe.azurecr.io/myapp:2.0.0
-        docker push testimagepaxafe.azurecr.io/myapp:2.0.0
+        docker build . -t testimagepaxafe.azurecr.io/webapp3:${{ github.sha}}
+        docker push testimagepaxafe.azurecr.io/webapp3:${{ github.sha}}
