@@ -31,6 +31,6 @@ jobs:
         with:
           imageToDeploy: testimagepaxafe.azurecr.io/myapp:${{ github.sha}}
           containerAppName: container-app-internal
-          resourceGroup: NetworkWatcherRG
+          resourceGroup: test-resource
           acrUsername: ${{ secrets.REGISTRY_USERNAME }}
           acrPassword: ${{ secrets.REGISTRY_PASSWORD }}
