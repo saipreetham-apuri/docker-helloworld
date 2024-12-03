@@ -32,4 +32,5 @@ jobs:
           azcliversion: latest
           inlineScript: |
             az account show
+            az containerapp list --resource-group test-resource --query "[].name"
             az containerapp update -n container-app-internal -g test-resource --image testimagepaxafe.azurecr.io/myapp:${{ github.sha}}
