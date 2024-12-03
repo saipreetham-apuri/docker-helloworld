@@ -26,11 +26,9 @@ jobs:
         run: |
           docker build . -t testimagepaxafe.azurecr.io/myapp:${{ github.sha}}
           docker push testimagepaxafe.azurecr.io/myapp:${{ github.sha}}
-      - name: Deploy to Azure Container App
-        uses: azure/container-apps@main
+      - name: Build and deploy Container App
+        uses: azure/container-apps-deploy-action@v1
         with:
-          resource-group: NetworkWatcherRG
-          container-app-name: container-app-internal
-          image: testimagepaxafe.azurecr.io/myapp:${{ github.sha}}
-          registry-username: ${{ secrets.REGISTRY_USERNAME }}
-          registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+          imageToDeploy: testimagepaxafe.azurecr.io/myapp:${{ github.sha}}
+          containerAppName: container-app-internal
+          resourceGroup: NetworkWatcherRG
